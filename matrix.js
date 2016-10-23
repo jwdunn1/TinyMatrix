@@ -76,7 +76,7 @@ Matrix.prototype = {
   get rows() {return this.$.length;},
   get cols() {return this.$[0].length;}
 };
-var randomize = function(r,c) { // create a rxc matrix with randomized values +1 to -1
+Matrix.randomize = function(r,c) { // create a rxc matrix with randomized values +1 to -1
   return new Matrix(r,c).map(function(x) {
       return 2*Math.random()-1;});
 };
