@@ -1,28 +1,31 @@
 # TinyMatrix
-A tiny matrix class in JavaScript
+[![license][license-image]][license-url]
+> A tiny matrix class in JavaScript. Useful for things like tiny neural networks.
 
 ## Example
 
 ```js
-var m1 = new Matrix([
-  [1, 2, 3],
-  [8, 2, 4]
+var a = new Matrix([
+  [ 1, 2, 3],
+  [-8, 2, 4]
 ]);
 
-var m2 = new Matrix([
+var b = new Matrix([
   [0, 1],
   [3, 2],
   [6, 0]
 ]);
 
-m1.dot(m2); // [ [24, 5], [30, 12] ]
+var c = a.dot(b);
+console.log(c.$); // [ [24, 5], [30, -4] ]
+console.log(c.map(Math.abs).mean()); // 15.75
 ```
 
 ## API
 
-### Matrix() instantiation
+### Matrix instantiation
 
-Create a new instance of Matrix. You can pass in a multidimensional array:
+Create a new instance of Matrix. Pass in a multidimensional array:
 
 ```js
 var m = new Matrix([
@@ -31,15 +34,20 @@ var m = new Matrix([
   [8, 2, 4]
 ]);
 ```
-or pass a row count to create an empty matrix
-or pass a row, column count to create a matrix initialized to zero
+or pass a row count to create an empty matrix,
+or pass a row, column count to create a matrix initialized to zero.
+
+```js
+var m = new Matrix(2,3);
+console.log(m.$); // [ [0, 0, 0], [0, 0, 0] ]
+```
 
 ### Matrix properties
 
 Access array values using the `.$` property: `m.$[0][1]`, with `0` corresponding to the row number and `1` corresponding to the column number. Access row size and column size using `.row` and `.col` getters.
 
 ### Matrix methods
-Methods are non-destructive and return a new matrix.
+Methods are non-destructive (returning a new matrix) and chainable.
 
 #### .add()
 
@@ -80,11 +88,12 @@ a.T();  // transpose
 #### .mean()
 
 ```js
-a.mean();  // scalar mean
+a.mean();  // scalar mean (not chainable)
 ```
 
 ## License
 
 [MIT](https://tldrlegal.com/license/mit-license)
 
+[license-image]: https://img.shields.io/npm/l/express.svg
 [license-url]: https://tldrlegal.com/license/mit-license
