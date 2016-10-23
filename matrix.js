@@ -7,7 +7,7 @@ var Matrix = function(r,c) { // pass a row count or an array of arrays
     for(i=0,this.$=[];i<r;i++) {
       this.$[i]=[];
       if (typeof c === 'number') // if col count, then init
-        {for(j=0;j<c;j++) {this.$[i][j]=[0];}}
+        {for(j=0;j<c;j++) {this.$[i][j]=0;}}
     }
   }
 };
