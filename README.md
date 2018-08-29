@@ -21,6 +21,8 @@ console.log(c.$); // [ [24, 5], [30, -4] ]
 console.log(c.map(Math.abs).mean()); // 15.75
 ```
 
+This OpenProcessing sketch uses the Matrix class to create a rudimentary neural network: https://www.openprocessing.org/sketch/386736
+
 ## API
 
 ### Matrix instantiation
@@ -40,6 +42,13 @@ or pass a row, column count to create a matrix initialized to zero.
 ```js
 var m = new Matrix(2,3);
 console.log(m.$); // [ [0, 0, 0], [0, 0, 0] ]
+```
+
+Use the utility method `randomize` to create an array randomly initialized -1 to 1:
+
+```js
+var m = Matrix.randomize(3,2);
+console.log(m.$); // ~[ [0.4820, -0.2079], [-0.5767, 0.2396], [0.5877, -0.1864] ]
 ```
 
 ### Matrix properties
